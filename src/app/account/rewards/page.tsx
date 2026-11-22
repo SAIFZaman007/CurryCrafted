@@ -26,7 +26,7 @@ export default async function RewardsPage() {
 
       {r.doublePoints.active && (
         <div className="on-dark flex items-center gap-4 rounded-3xl bg-forest p-5 text-cream">
-          <span className="display grid h-14 w-14 flex-none place-items-center rounded-full bg-gold text-2xl font-semibold text-forest">2×</span>
+          <span className="display flex h-14 w-14 flex-none items-center justify-center rounded-tile bg-gold-metal text-2xl font-semibold leading-none text-forest">2<span className="ml-0.5 text-base font-normal">×</span></span>
           <div>
             <p className="eyebrow text-gold">Promotion active</p>
             <p className="mt-1 font-semibold">{r.doublePoints.label}</p>
@@ -62,7 +62,7 @@ export default async function RewardsPage() {
             { label: "Expiry", value: `${r.expiryMonths} mo`, sub: summary.nextExpiry ? `Earliest points expire ${formatDateTime(summary.nextExpiry)}` : "Points expire after this period", icon: "clock" },
           ].map((s) => (
             <div key={s.label} className="rounded-3xl bg-white p-6 shadow-[var(--shadow-card)]">
-              <span className="grid h-10 w-10 place-items-center rounded-full bg-sage text-forest"><Icon name={s.icon} className="h-4 w-4" /></span>
+              <span className="grid h-10 w-10 place-items-center rounded-tile bg-sage text-forest"><Icon name={s.icon} className="h-4 w-4" /></span>
               <p className="mt-4 text-xs font-semibold uppercase tracking-wider text-charcoal/60">{s.label}</p>
               <p className="display mt-1 text-4xl text-forest">{s.value}</p>
               <p className="mt-1 text-sm text-charcoal/75">{s.sub}</p>

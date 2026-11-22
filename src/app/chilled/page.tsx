@@ -21,7 +21,7 @@ export default async function ChilledPage() {
         range="chilled"
         image="/images/collection-chilled.jpg"
         crumbs={[{ label: "Home", href: "/" }, { label: "Shop", href: "/shop" }, { label: "Chilled" }]}
-        title={<>The Chilled <em className="text-gold">Collection.</em></>}
+        title={<>The Chilled <em className="text-gold-metal pr-[0.1em]">Collection.</em></>}
         intro="Cooked in small batches, blast chilled within minutes and delivered in our own refrigerated service. Ready to heat and eat in the days ahead."
         points={[
           { icon: "pin", text: "Delivered to selected postcodes only. Check yours below." },

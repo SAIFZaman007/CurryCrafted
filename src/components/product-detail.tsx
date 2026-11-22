@@ -26,7 +26,7 @@ export function Gallery({ images, name, available }: { images: string[]; name: s
             className={cx("object-cover transition-[opacity,transform] duration-700 ease-[var(--ease-expo)] group-hover:scale-[1.04]", i === active ? "opacity-100" : "opacity-0", !available && "grayscale")}
           />
         ))}
-        {!available && <span className="absolute left-5 top-5 rounded-full bg-charcoal px-4 py-2 text-xs font-bold uppercase tracking-wider text-cream">Currently unavailable</span>}
+        {!available && <span className="absolute left-5 top-5 rounded-chip bg-charcoal px-4 py-2 text-xs font-bold uppercase tracking-wider text-cream">Currently unavailable</span>}
       </div>
       {images.length > 1 && (
         <div className="mt-4 flex gap-3" role="group" aria-label="Product images">
@@ -55,7 +55,7 @@ function DeliveryBlock({ product }: { product: ProductDTO }) {
     return (
       <div className={cx("rounded-2xl border p-5", state === "no" ? "border-danger/25 bg-danger-soft" : "border-forest/10 bg-sage")} aria-live="polite">
         <div className="flex items-start gap-3">
-          <span className="grid h-10 w-10 flex-none place-items-center rounded-full bg-forest text-gold">
+          <span className="grid h-10 w-10 flex-none place-items-center rounded-tile bg-forest text-gold">
             <Icon name={state === "yes" ? "check" : state === "no" ? "close" : "pin"} className="h-4 w-4" />
           </span>
           <div className="text-sm leading-relaxed">
@@ -88,7 +88,7 @@ function DeliveryBlock({ product }: { product: ProductDTO }) {
   return (
     <div className={cx("rounded-2xl border p-5", blocked ? "border-danger/25 bg-danger-soft" : "border-forest/10 bg-sage")} aria-live="polite">
       <div className="flex items-start gap-3">
-        <span className="grid h-10 w-10 flex-none place-items-center rounded-full bg-forest text-gold">
+        <span className="grid h-10 w-10 flex-none place-items-center rounded-tile bg-forest text-gold">
           <Icon name={blocked ? "close" : "truck"} className="h-4 w-4" />
         </span>
         <div className="text-sm leading-relaxed">

@@ -414,7 +414,7 @@ export function CheckoutFlow({ stripeEnabled, guestCheckout, savedAddresses, pay
                               <span>
                                 <span className="font-semibold text-forest">
                                   {a.label}
-                                  {a.isDefault && <span className="ml-2 rounded-full bg-forest px-2 py-0.5 text-[0.6rem] font-bold uppercase tracking-wider text-gold">Default</span>}
+                                  {a.isDefault && <span className="ml-2 rounded-chip bg-forest px-2 py-0.5 text-[0.6rem] font-bold uppercase tracking-wider text-gold">Default</span>}
                                 </span>
                                 <span className="mt-1 block text-charcoal/80">
                                   {a.line1}

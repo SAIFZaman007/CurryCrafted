@@ -2,21 +2,19 @@
 
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
-import { useDataSaver, useMediaQuery, useReducedMotion } from "@/lib/use-media";
+import { useReducedMotion } from "@/lib/use-media";
 import { cx } from "./ui";
 
 /*
- * "Living photograph" hero: one still (the LCP image), brought to life with
+ * Hero: one still (the LCP image), kept alive with
  *   - a slow camera push,
- *   - a masked duplicate layer that lets the spices float while the bowl stays put,
- *   - canvas steam and drifting golden sparks (screen-blended),
- *   - an optional cinematic video that fades in on capable devices,
+ *   - a touch of canvas steam and drifting golden sparks (screen-blended) over the photo's own steam,
  *   - film grain and a vignette.
  * Everything pauses off-screen, in a hidden tab, under reduced motion, or from the visible control (WCAG 2.2.2).
  */
 
-const STILL = "/images/hero-living.jpg";
-const ALT = "A bowl of butter chicken steaming, surrounded by floating spices on a deep green background";
+const STILL = "/images/hero-curry-crafted.jpg";
+const ALT = "A steaming bowl of creamy tikka curry with fresh coriander, resting on deep green velvet";
 
 /* ---------------------------------------------------------------- canvas FX */
 
@@ -34,7 +32,7 @@ function sprite(size: number, stops: [number, string][]): HTMLCanvasElement {
 const rnd = (a: number, b: number) => a + Math.random() * (b - a);
 
 type Puff = { x: number; y: number; r: number; vy: number; ph: number; sw: number; life: number; t: number; a: number };
-const newPuff = (t = 0): Puff => ({ x: rnd(0.62, 0.8), y: rnd(0.25, 0.3), r: rnd(0.025, 0.045), vy: rnd(0.012, 0.02), ph: rnd(0, 6.28), sw: rnd(0.006, 0.016), life: rnd(9, 15), t, a: rnd(0.5, 1) });
+const newPuff = (t = 0): Puff => ({ x: rnd(0.6, 0.84), y: rnd(0.36, 0.4), r: rnd(0.025, 0.045), vy: rnd(0.014, 0.024), ph: rnd(0, 6.28), sw: rnd(0.006, 0.016), life: rnd(9, 15), t, a: rnd(0.5, 1) });
 
 function HeroFx({ running, steam }: { running: boolean; steam: boolean }) {
   const canvas = useRef<HTMLCanvasElement>(null);
@@ -62,7 +60,7 @@ function HeroFx({ running, steam }: { running: boolean; steam: boolean }) {
     ro.observe(cv);
 
     const small = cv.offsetWidth < 900; // fewer sprites on phones
-    const puffs = Array.from({ length: small ? 24 : 46 }, () => {
+    const puffs = Array.from({ length: small ? 14 : 26 }, () => {
       const p = newPuff();
       p.t = rnd(0, p.life);
       return p;
@@ -89,7 +87,7 @@ function HeroFx({ running, steam }: { running: boolean; steam: boolean }) {
           const x = s.x + Math.sin(s.ph + s.t * 0.5) * s.sw * (1 + k * 3) + k * 0.01;
           const y = s.y - s.vy * s.t;
           const r = s.r * (1 + k * 2.6) * W;
-          ctx.globalAlpha = Math.pow(fade, 1.4) * s.a * 0.55 * steamAlpha;
+          ctx.globalAlpha = Math.pow(fade, 1.4) * s.a * 0.32 * steamAlpha;
           ctx.drawImage(puff, x * W - r, y * H - r, r * 2, r * 2);
         }
       }
@@ -150,54 +148,14 @@ function HeroFx({ running, steam }: { running: boolean; steam: boolean }) {
 
 export function HeroMedia() {
   const reduced = useReducedMotion();
-  const saver = useDataSaver();
-  const wide = useMediaQuery("(min-width: 1024px)");
   const [paused, setPaused] = useState(false);
   const running = !reduced && !paused;
-
-  // The film is an enhancement: fetched after the page is idle, and only where motion, width and data allow.
-  const [armed, setArmed] = useState(false);
-  const [filmOn, setFilmOn] = useState(false);
-  const video = useRef<HTMLVideoElement>(null);
-  const filmAllowed = wide && !reduced && !saver;
-  useEffect(() => {
-    if (!filmAllowed) return;
-    type Idle = { requestIdleCallback?: (cb: () => void, o?: { timeout: number }) => number; cancelIdleCallback?: (n: number) => void };
-    const w: Idle = window;
-    const id = w.requestIdleCallback ? w.requestIdleCallback(() => setArmed(true), { timeout: 2500 }) : window.setTimeout(() => setArmed(true), 1200);
-    return () => {
-      if (w.requestIdleCallback) w.cancelIdleCallback?.(id);
-      else window.clearTimeout(id);
-    };
-  }, [filmAllowed]);
-  useEffect(() => {
-    const v = video.current;
-    if (!v) return;
-    if (running) void v.play().catch(() => {});
-    else v.pause();
-  }, [running, armed]);
 
   return (
     <div className={cx("hero-stage", !running && "is-paused")} data-paused={!running}>
       <div className="hero-cam">
         <Image src={STILL} alt={ALT} fill priority loading="eager" sizes="(min-width: 1024px) 100vw, 160vw" className="hero-layer" />
-        <Image src={STILL} alt="" aria-hidden="true" fill loading="eager" sizes="(min-width: 1024px) 100vw, 160vw" className="hero-layer hero-float" />
-        {filmAllowed && armed && (
-          <video
-            ref={video}
-            src="/videos/hero-cinematic.mp4"
-            poster="/videos/hero-cinematic-poster.jpg"
-            muted
-            loop
-            playsInline
-            preload="auto"
-            aria-hidden="true"
-            tabIndex={-1}
-            onPlaying={() => setFilmOn(true)}
-            className={cx("hero-layer hero-film", filmOn && running && "is-on")}
-          />
-        )}
-        <HeroFx running={running} steam={!(filmOn && running)} />
+        <HeroFx running={running} steam />
       </div>
       <div className="hero-grain" aria-hidden="true" />
       <div className="hero-vignette" aria-hidden="true" />
@@ -208,7 +166,7 @@ export function HeroMedia() {
           type="button"
           onClick={() => setPaused((p) => !p)}
           aria-pressed={paused}
-          className="absolute bottom-24 right-4 z-20 inline-flex h-10 items-center gap-2 rounded-full border border-cream/25 bg-forest/60 px-4 text-xs font-semibold tracking-wide text-cream backdrop-blur transition-colors hover:border-gold hover:text-gold focus-visible:outline-gold lg:bottom-32 lg:right-8"
+          className="absolute bottom-24 right-4 z-20 inline-flex h-10 items-center gap-2 rounded-btn border border-cream/25 bg-forest/60 px-4 text-xs font-semibold tracking-wide text-cream backdrop-blur transition-colors hover:border-gold hover:text-gold focus-visible:outline-gold lg:bottom-32 lg:right-8"
         >
           <svg viewBox="0 0 16 16" className="h-3.5 w-3.5" fill="currentColor" aria-hidden="true">
             {paused ? <path d="M4 2.5v11l9-5.5z" /> : <path d="M3.500 2h3.200v12H3.500zM9.300 2h3.200v12H9.300z" />}

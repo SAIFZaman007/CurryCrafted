@@ -20,7 +20,7 @@ export default async function FrozenPage() {
         range="frozen"
         image="/images/collection-frozen.jpg"
         crumbs={[{ label: "Home", href: "/" }, { label: "Shop", href: "/shop" }, { label: "Frozen" }]}
-        title={<>The Frozen <em className="text-gold">Collection.</em></>}
+        title={<>The Frozen <em className="text-gold-metal pr-[0.1em]">Collection.</em></>}
         intro="The same recipes, frozen within hours of cooking to lock in flavour. Stock your freezer and a proper curry is never more than a few minutes away."
         points={[
           { icon: "truck", text: "Delivered UK-wide by tracked courier, packed with ice in insulated boxes." },

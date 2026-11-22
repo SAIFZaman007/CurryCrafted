@@ -58,7 +58,7 @@ export function AccountNav() {
                 href={item.href}
                 aria-current={active ? "page" : undefined}
                 className={cx(
-                  "flex h-11 items-center gap-3 whitespace-nowrap rounded-full px-4 text-sm font-semibold transition-colors lg:h-12 lg:rounded-2xl",
+                  "flex h-11 items-center gap-3 whitespace-nowrap rounded-btn px-4 text-sm font-semibold transition-colors lg:h-12 lg:rounded-btn",
                   active ? "bg-forest text-cream" : "border border-forest/15 bg-white text-forest hover:bg-forest/5 lg:border-0",
                 )}
               >
@@ -69,7 +69,7 @@ export function AccountNav() {
           );
         })}
         <li className="flex-none lg:mt-2 lg:border-t lg:border-forest/10 lg:pt-2">
-          <button type="button" onClick={logout} disabled={busy} className="flex h-11 w-full items-center gap-3 whitespace-nowrap rounded-full border border-forest/15 bg-white px-4 text-sm font-semibold text-charcoal/80 transition-colors hover:bg-danger-soft hover:text-danger lg:h-12 lg:rounded-2xl lg:border-0">
+          <button type="button" onClick={logout} disabled={busy} className="flex h-11 w-full items-center gap-3 whitespace-nowrap rounded-btn border border-forest/15 bg-white px-4 text-sm font-semibold text-charcoal/80 transition-colors hover:bg-danger-soft hover:text-danger lg:h-12 lg:rounded-btn lg:border-0">
             {busy ? <span className="spinner" /> : <Icon name="logout" className="h-4 w-4" />} Logout
           </button>
         </li>
@@ -250,7 +250,7 @@ export function AddressManager({ initial }: { initial: AddressDTO[] }) {
           <li key={a.id} className={cx("rounded-3xl border bg-white p-5", a.isDefault ? "border-forest" : "border-forest/10")}>
             <div className="flex items-center justify-between gap-2">
               <p className="font-semibold text-forest">{a.label}</p>
-              {a.isDefault && <span className="rounded-full bg-forest px-2.5 py-1 text-[0.6rem] font-bold uppercase tracking-wider text-gold">Default</span>}
+              {a.isDefault && <span className="rounded-chip bg-forest px-2.5 py-1 text-[0.6rem] font-bold uppercase tracking-wider text-gold">Default</span>}
             </div>
             <p className="mt-2 text-sm leading-relaxed text-charcoal/85">
               {a.line1}
@@ -491,9 +491,9 @@ export function CopyField({ label, value, mono = false }: { label: string; value
       <label htmlFor={id} className="mb-1.5 block text-sm font-semibold text-cream">
         {label}
       </label>
-      <div className="flex gap-2 rounded-full border border-gold/40 bg-cream/5 p-1">
+      <div className="flex gap-2 rounded-btn border border-gold/40 bg-cream/5 p-1">
         <input ref={input} id={id} readOnly value={value} onFocus={(e) => e.currentTarget.select()} className={cx("h-11 min-w-0 flex-1 bg-transparent px-4 text-sm text-cream focus:outline-none", mono && "font-bold tracking-[0.18em] text-gold")} />
-        <button type="button" onClick={copy} className="flex h-11 flex-none items-center gap-2 rounded-full bg-gold px-5 text-sm font-semibold text-forest transition-colors hover:bg-gold-soft">
+        <button type="button" onClick={copy} className="flex h-11 flex-none items-center gap-2 btn-solid rounded-md bg-gold-metal px-5 text-sm font-semibold text-forest hover:bg-[position:100%_50%] focus-visible:bg-[position:100%_50%]">
           <Icon name={copied ? "check" : "copy"} className="h-4 w-4" /> {copied ? "Copied" : "Copy"}
         </button>
       </div>

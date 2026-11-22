@@ -96,14 +96,14 @@ export function Catalogue({
       {!lockedRange && (
         <fieldset>
           <legend className="eyebrow text-forest/70">Range</legend>
-          <div className="mt-3 grid grid-cols-3 gap-1 rounded-full bg-forest/5 p-1">
+          <div className="mt-3 grid grid-cols-3 gap-1 rounded-btn bg-forest/5 p-1">
             {(["all", "chilled", "frozen"] as const).map((r) => (
               <button
                 key={r}
                 type="button"
                 aria-pressed={range === r}
                 onClick={() => change(() => setRange(r))}
-                className={cx("h-10 rounded-full text-sm font-semibold capitalize transition-colors", range === r ? "bg-forest text-cream" : "text-forest hover:bg-forest/10")}
+                className={cx("h-10 rounded-md text-sm font-semibold capitalize transition-colors", range === r ? "bg-forest text-cream" : "text-forest hover:bg-forest/10")}
               >
                 {r}
               </button>
@@ -185,23 +185,23 @@ export function Catalogue({
             onChange={(e) => change(() => setQuery(e.target.value))}
             placeholder={searchMode ? "Search by dish, ingredient or category" : "Search this collection"}
             autoComplete="off"
-            className={cx(inputClass, "h-12 rounded-full pl-12 pr-11")}
+            className={cx(inputClass, "h-12 rounded-btn pl-12 pr-11")}
           />
           {query && (
-            <button type="button" onClick={() => change(() => setQuery(""))} aria-label="Clear search" className="absolute right-1.5 top-1.5 grid h-9 w-9 place-items-center rounded-full text-forest/70 hover:bg-forest/10">
+            <button type="button" onClick={() => change(() => setQuery(""))} aria-label="Clear search" className="absolute right-1.5 top-1.5 grid h-9 w-9 place-items-center rounded-md text-forest/70 hover:bg-forest/10">
               <Icon name="close" className="h-4 w-4" />
             </button>
           )}
         </div>
         <div className="flex gap-3">
           <button type="button" onClick={() => setFiltersOpen((o) => !o)} aria-expanded={filtersOpen} aria-controls="filter-panel" className={btn("outline", "md", "flex-none lg:hidden")}>
-            <Icon name="filter" className="h-4 w-4" /> Filters{activeCount > 0 && <span className="grid h-5 min-w-5 place-items-center rounded-full bg-forest px-1 text-[0.68rem] text-cream">{activeCount}</span>}
+            <Icon name="filter" className="h-4 w-4" /> Filters{activeCount > 0 && <span className="grid h-5 min-w-5 place-items-center rounded-chip bg-forest px-1 text-[0.68rem] text-cream">{activeCount}</span>}
           </button>
           <div className="relative flex-1 md:flex-none">
             <label htmlFor="catalogue-sort" className="sr-only">
               Sort products
             </label>
-            <select id="catalogue-sort" value={sort} onChange={(e) => setSort(e.target.value as Sort)} className={cx(inputClass, "h-12 appearance-none rounded-full pr-10 text-sm font-semibold text-forest md:w-60")}>
+            <select id="catalogue-sort" value={sort} onChange={(e) => setSort(e.target.value as Sort)} className={cx(inputClass, "h-12 appearance-none rounded-btn pr-10 text-sm font-semibold text-forest md:w-60")}>
               <option value="popular">Sort: Popular</option>
               <option value="newest">Sort: Newest</option>
               <option value="price-asc">Sort: Price low to high</option>
@@ -224,7 +224,7 @@ export function Catalogue({
               aria-pressed={active}
               onClick={() => change(() => setCategory(c.id))}
               className={cx(
-                "flex h-11 flex-none items-center gap-2 rounded-full border px-5 text-sm font-semibold transition-all duration-300",
+                "flex h-11 flex-none items-center gap-2 rounded-btn border px-5 text-sm font-semibold transition-all duration-300",
                 active ? "border-forest bg-forest text-cream" : "border-forest/15 bg-white text-forest hover:border-forest/50",
               )}
             >
@@ -257,7 +257,7 @@ export function Catalogue({
 
           {filtered.length === 0 ? (
             <div className="rounded-3xl border border-dashed border-forest/20 bg-white px-6 py-16 text-center">
-              <span className="mx-auto grid h-16 w-16 place-items-center rounded-full bg-sage text-forest">
+              <span className="mx-auto grid h-16 w-16 place-items-center rounded-tile bg-sage text-forest">
                 <Icon name="search" className="h-7 w-7" />
               </span>
               <p className="display mt-5 text-3xl text-forest">No dishes match your selection</p>

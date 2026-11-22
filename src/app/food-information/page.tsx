@@ -20,7 +20,7 @@ export default async function FoodInformationPage() {
       <PageHero
         crumbs={[{ label: "Home", href: "/" }, { label: "Allergen & Food Information" }]}
         eyebrow="Food information"
-        title={<>Know Exactly <em className="text-gold">What You&apos;re Eating.</em></>}
+        title={<>Know Exactly <em className="text-gold-metal pr-[0.1em]">What You&apos;re Eating.</em></>}
         intro="Allergens, ingredients, dietary suitability, nutrition, storage and preparation for every dish. The same information appears on each product page before you add it to your basket."
       />
 

@@ -14,7 +14,7 @@ export default async function SearchPage({ searchParams }: { searchParams: Promi
       <PageHero
         crumbs={[{ label: "Home", href: "/" }, { label: "Search" }]}
         eyebrow="Search"
-        title={q ? <>Results for <em className="text-gold">“{q.slice(0, 60)}”</em></> : <>Search <em className="text-gold">the Menu.</em></>}
+        title={q ? <>Results for <em className="text-gold-metal pr-[0.1em]">“{q.slice(0, 60)}”</em></> : <>Search <em className="text-gold-metal pr-[0.1em]">the Menu.</em></>}
         intro="Search by dish name, ingredient or category, then narrow things down by range, dietary need, spice level or price."
       />
       <section className="container-x py-10 md:py-14">

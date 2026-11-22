@@ -22,7 +22,7 @@ export default async function DeliveryPage() {
 
   return (
     <>
-      <PageHero crumbs={[{ label: "Home", href: "/" }, { label: "Delivery Information" }]} eyebrow="Delivery information & policy" title={<>Two Ranges. <em className="text-gold">Two Ways to Deliver.</em></>} intro="Chilled meals are delivered by our own refrigerated service to selected postcodes. Frozen meals are sent UK-wide by tracked courier. Here's exactly how each works." />
+      <PageHero crumbs={[{ label: "Home", href: "/" }, { label: "Delivery Information" }]} eyebrow="Delivery information & policy" title={<>Two Ranges. <em className="text-gold-metal pr-[0.1em]">Two Ways to Deliver.</em></>} intro="Chilled meals are delivered by our own refrigerated service to selected postcodes. Frozen meals are sent UK-wide by tracked courier. Here's exactly how each works." />
 
       <section className="container-x relative z-10 -mt-8" aria-labelledby="coverage-heading">
         <div className="grid gap-6 rounded-[2rem] bg-white p-6 shadow-[var(--shadow-lift)] ring-1 ring-gold-muted/30 md:p-9 lg:grid-cols-12 lg:gap-10">

@@ -17,7 +17,7 @@ export default async function ContactPage() {
   ];
   return (
     <>
-      <PageHero crumbs={[{ label: "Home", href: "/" }, { label: "Contact" }]} eyebrow="Contact us" title={<>We&apos;re Here <em className="text-gold">to Help.</em></>} intro="Questions about an order, delivery, allergens or rewards? Send us a message and the team will get back to you." />
+      <PageHero crumbs={[{ label: "Home", href: "/" }, { label: "Contact" }]} eyebrow="Contact us" title={<>We&apos;re Here <em className="text-gold-metal pr-[0.1em]">to Help.</em></>} intro="Questions about an order, delivery, allergens or rewards? Send us a message and the team will get back to you." />
       <section className="container-x grid gap-10 py-12 md:py-16 lg:grid-cols-12">
         <div className="lg:col-span-7">
           <div className="rounded-3xl bg-white p-6 shadow-[var(--shadow-card)] md:p-9">
@@ -32,7 +32,7 @@ export default async function ContactPage() {
             <dl className="mt-6 space-y-5">
               {rows.map((r) => (
                 <div key={r.label} className="flex gap-4">
-                  <span className="grid h-11 w-11 flex-none place-items-center rounded-full bg-cream/10 text-gold"><Icon name={r.icon} /></span>
+                  <span className="grid h-11 w-11 flex-none place-items-center rounded-tile bg-cream/10 text-gold"><Icon name={r.icon} /></span>
                   <div>
                     <dt className="text-xs font-semibold uppercase tracking-wider text-cream/65">{r.label}</dt>
                     <dd className="mt-0.5 break-words font-medium">{r.value}</dd>

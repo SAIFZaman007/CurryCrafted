@@ -60,12 +60,12 @@ export default async function FaqPage() {
 
   return (
     <>
-      <PageHero crumbs={[{ label: "Home", href: "/" }, { label: "FAQs" }]} eyebrow="Help centre" title={<>Frequently Asked <em className="text-gold">Questions.</em></>} intro="Everything you need to know about ordering ahead, chilled and frozen delivery, payment and rewards." />
+      <PageHero crumbs={[{ label: "Home", href: "/" }, { label: "FAQs" }]} eyebrow="Help centre" title={<>Frequently Asked <em className="text-gold-metal pr-[0.1em]">Questions.</em></>} intro="Everything you need to know about ordering ahead, chilled and frozen delivery, payment and rewards." />
       <div className="container-x grid gap-10 py-12 md:py-16 lg:grid-cols-[15rem_1fr]">
         <nav aria-label="FAQ topics" className="lg:sticky lg:top-24 lg:h-fit">
           <ul className="no-scrollbar -mx-5 flex gap-2 overflow-x-auto px-5 lg:mx-0 lg:block lg:space-y-1 lg:px-0">
             {groups.map((g) => (
-              <li key={g.id} className="flex-none"><a href={`#${g.id}`} className="flex h-11 items-center whitespace-nowrap rounded-full border border-forest/15 bg-white px-4 text-sm font-semibold text-forest hover:bg-forest hover:text-cream lg:border-0 lg:bg-transparent">{g.title}</a></li>
+              <li key={g.id} className="flex-none"><a href={`#${g.id}`} className="flex h-11 items-center whitespace-nowrap rounded-btn border border-forest/15 bg-white px-4 text-sm font-semibold text-forest hover:bg-forest hover:text-cream lg:border-0 lg:bg-transparent">{g.title}</a></li>
             ))}
           </ul>
         </nav>
@@ -79,7 +79,7 @@ export default async function FaqPage() {
                   <details key={q} className="group border-b border-forest/10 last:border-0">
                     <summary className="flex min-h-16 items-center justify-between gap-4 py-4 font-semibold text-forest">
                       {q}
-                      <span className="grid h-8 w-8 flex-none place-items-center rounded-full bg-sage text-xl leading-none transition-transform duration-300 group-open:rotate-45" aria-hidden="true">+</span>
+                      <span className="grid h-8 w-8 flex-none place-items-center rounded-md bg-sage text-xl leading-none transition-transform duration-300 group-open:rotate-45" aria-hidden="true">+</span>
                     </summary>
                     <p className="pb-6 pr-10 text-sm leading-relaxed text-charcoal/85">{a}</p>
                   </details>

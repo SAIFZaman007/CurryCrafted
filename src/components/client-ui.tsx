@@ -66,10 +66,10 @@ export function QuantitySelector({
 }) {
   const dim = size === "sm" ? "h-9 w-9" : "h-12 w-12";
   return (
-    <div role="group" aria-label={label} className={cx("inline-flex items-center rounded-full border border-forest/20 bg-white", disabled && "opacity-50")}>
+    <div role="group" aria-label={label} className={cx("inline-flex items-center rounded-btn border border-forest/20 bg-white", disabled && "opacity-50")}>
       <button
         type="button"
-        className={cx(dim, "grid place-items-center rounded-full text-forest transition-colors hover:bg-forest/5 disabled:opacity-30")}
+        className={cx(dim, "grid place-items-center rounded-md text-forest transition-colors hover:bg-forest/5 disabled:opacity-30")}
         onClick={() => onChange(Math.max(min, value - 1))}
         disabled={disabled || value <= min}
         aria-label={`Decrease ${label.toLowerCase()}`}
@@ -81,7 +81,7 @@ export function QuantitySelector({
       </span>
       <button
         type="button"
-        className={cx(dim, "grid place-items-center rounded-full text-forest transition-colors hover:bg-forest/5 disabled:opacity-30")}
+        className={cx(dim, "grid place-items-center rounded-md text-forest transition-colors hover:bg-forest/5 disabled:opacity-30")}
         onClick={() => onChange(Math.min(max, value + 1))}
         disabled={disabled || value >= max}
         aria-label={`Increase ${label.toLowerCase()}`}
@@ -167,7 +167,7 @@ export function Modal({
       >
         <div className="mb-4 flex items-start justify-between gap-4">
           <h2 className="display text-2xl text-forest sm:text-3xl">{title}</h2>
-          <button type="button" onClick={onClose} aria-label="Close" className="-mr-2 -mt-1 grid h-11 w-11 flex-none place-items-center rounded-full text-forest transition-colors hover:bg-forest/10">
+          <button type="button" onClick={onClose} aria-label="Close" className="-mr-2 -mt-1 grid h-11 w-11 flex-none place-items-center rounded-btn text-forest transition-colors hover:bg-forest/10">
             <Icon name="close" />
           </button>
         </div>

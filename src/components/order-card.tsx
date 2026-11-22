@@ -17,8 +17,8 @@ export function OrderCard({ order, items }: { order: OrderRow; items: OrderItemR
           <h3 className="mt-0.5 text-lg font-bold tracking-wider text-forest">{order.reference}</h3>
         </div>
         <div className="flex flex-wrap gap-2">
-          <span className="rounded-full bg-forest px-3 py-1.5 text-[0.66rem] font-bold uppercase tracking-wider text-gold">{ORDER_STATUS_LABELS[order.status] ?? order.status}</span>
-          <span className="rounded-full bg-sage px-3 py-1.5 text-[0.66rem] font-bold uppercase tracking-wider text-forest">{order.paymentStatus === "paid" ? (order.paymentMode === "demo" ? "Paid (demo)" : "Paid") : order.paymentStatus}</span>
+          <span className="rounded-chip bg-forest px-3 py-1.5 text-[0.66rem] font-bold uppercase tracking-wider text-gold">{ORDER_STATUS_LABELS[order.status] ?? order.status}</span>
+          <span className="rounded-chip bg-sage px-3 py-1.5 text-[0.66rem] font-bold uppercase tracking-wider text-forest">{order.paymentStatus === "paid" ? (order.paymentMode === "demo" ? "Paid (demo)" : "Paid") : order.paymentStatus}</span>
         </div>
       </div>
       <dl className="mt-5 grid gap-4 text-sm sm:grid-cols-2 lg:grid-cols-4">

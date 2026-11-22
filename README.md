@@ -11,14 +11,20 @@ Needs Node.js 20.9 or newer. For a production build: `npm run build && npm start
 
 ## The design
 
-The home page hero is a "living photograph": one still of the butter chicken bowl (`public/images/hero-living.jpg`),
-brought to life with a slow camera push, floating spices, canvas steam and sparks, grain and a vignette. On desktop a
-cinematic video fades in over it. The same still is the fallback everywhere else.
+The home page hero is built around one photograph (`public/images/hero-curry-crafted.jpg`): a steaming bowl on deep green
+velvet, with a slow camera push, a touch of canvas steam and drifting golden sparks, film grain and a vignette.
 
-- **Reduced motion, Save-Data, and off-screen:** all motion stops (or never starts). A visible *Pause motion* button covers WCAG 2.2.2.
+- **Reduced motion and off-screen:** all motion stops (or never starts). A visible *Pause motion* button covers WCAG 2.2.2.
+- **Logo:** `public/images/logo-navbar.png` is the horizontal "Royal White" lockup used in the header, mobile menu and
+  checkout header. `logo.png` / `logo-light.png` are the stacked lockup (footer). The `Logo` component is in `src/components/ui.tsx`.
+- **Theme:** emerald (`--color-forest`, `#0f2418`) with a metallic gold gradient sampled from the redesign. Use `bg-gold-metal`
+  (buttons, badges) and `text-gold-metal` (headline accents). Solid buttons use the `btn-solid` class: the fill flows to a
+  lighter shade on hover, and `src/components/magnetic-buttons.tsx` pulls them gently towards the cursor (mouse only, off for
+  reduced motion). Shapes are small-radius rectangles via `--radius-btn`,
+  `--radius-chip` and `--radius-tile` in `src/app/globals.css`; change them there to adjust every button, chip and tile at once.
 - **Video is an enhancement.** `AmbientVideo` (`src/components/ambient-video.tsx`) shows a poster image first, downloads the
   file only when it nears the viewport, plays only while visible, and never loads for reduced-motion or Save-Data visitors.
-- **Videos** live in `public/videos/` (`hero-cinematic`, `kitchen`, `unboxing`, `bowl-loop`), each with a `-poster.jpg`.
+- **Videos** live in `public/videos/` (`our-kitchen` for the home page Our Kitchen section, `kitchen` for the Our Story hero, `unboxing`, `bowl-loop`), each with a `-poster.jpg`.
   Loops are crossfaded so they restart without a visible jump.
 
 ## How the backend-free API works

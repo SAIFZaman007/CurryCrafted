@@ -19,6 +19,15 @@
   --font-display: "Playfair Display Variable", "Playfair Display", Georgia, "Times New Roman", serif;
   --font-sans: "Manrope Variable", "Manrope", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
 
+  /* Shape language of the redesign: small-radius rectangles, not pills. */
+  --radius-btn: 0.5rem;
+  --radius-chip: 0.375rem;
+  --radius-tile: 0.75rem;
+
+  /* Metallic gold sampled from the redesigned landing page. */
+  --gold-metal: linear-gradient(100deg, #a87a1c 0%, #c99a30 24%, #f3d055 52%, #ffdf60 60%, #d2a83a 82%, #b0821f 100%);
+  --gold-metal-text: linear-gradient(100deg, #b2821f 0%, #e2bb46 38%, #fada5c 58%, #c99a30 100%);
+
   --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
   --shadow-card: 0 1px 2px rgba(15, 36, 24, 0.04), 0 12px 32px -16px rgba(15, 36, 24, 0.18);
   --shadow-lift: 0 2px 4px rgba(15, 36, 24, 0.05), 0 28px 56px -24px rgba(15, 36, 24, 0.35);
@@ -78,6 +87,49 @@
   letter-spacing: -0.015em;
   line-height: 1.05;
   font-weight: 500;
+}
+
+/* Gold-gradient fill for buttons and badges (dark text sits on top). */
+@utility bg-gold-metal {
+  background-image: var(--gold-metal);
+  background-size: 180% 100%;
+  background-position: 0% 50%;
+}
+
+/* Emerald fill that flows to a lighter emerald when the button is hovered or focused. */
+@utility bg-emerald-flow {
+  background-image: linear-gradient(100deg, var(--color-forest) 0%, var(--color-forest) 38%, var(--color-forest-600) 100%);
+  background-size: 260% 100%;
+  background-position: 0% 50%;
+}
+
+/* Solid buttons: colour flows across the fill, and the button is pulled gently towards the cursor
+   (the offset comes from <MagneticButtons />, which sets --mx / --my). */
+.btn-solid {
+  translate: var(--mx, 0px) var(--my, 0px);
+  transition:
+    background-position 0.9s var(--ease-expo),
+    background-color 0.3s,
+    color 0.3s,
+    border-color 0.3s,
+    box-shadow 0.4s,
+    scale 0.2s var(--ease-expo),
+    translate 0.35s var(--ease-expo);
+}
+@media (prefers-reduced-motion: reduce) {
+  .btn-solid {
+    translate: none;
+    transition: background-color 0.2s, color 0.2s, box-shadow 0.2s;
+  }
+}
+
+/* Gold-gradient headline accent text. */
+@utility text-gold-metal {
+  background-image: var(--gold-metal-text);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
 }
 
 @utility eyebrow {
@@ -224,14 +276,14 @@
   background: var(--color-forest);
 }
 .hero-cam {
-  --ar: 1.5735;
+  --ar: 1.4688;
   position: absolute;
   width: max(100cqw, calc(100cqh * var(--ar)));
   height: max(100cqh, calc(100cqw / var(--ar)));
   right: 0;
   top: 50%;
   translate: 0 -50%;
-  transform-origin: 72% 46%;
+  transform-origin: 78% 55%;
   animation: cam-push 26s ease-in-out infinite alternate, cam-in 2.4s var(--ease-expo) both;
 }
 @media (max-width: 1023px) {
@@ -252,20 +304,6 @@
   object-fit: cover;
   max-width: none;
 }
-.hero-float {
-  mix-blend-mode: screen;
-  opacity: 0.55;
-  -webkit-mask-image: radial-gradient(ellipse 21% 29% at 71.5% 46%, transparent 72%, #000 100%);
-  mask-image: radial-gradient(ellipse 21% 29% at 71.5% 46%, transparent 72%, #000 100%);
-  animation: float-drift 14s ease-in-out infinite alternate;
-}
-.hero-film {
-  opacity: 0;
-  transition: opacity 1.6s ease;
-}
-.hero-film.is-on {
-  opacity: 1;
-}
 .hero-grain,
 .hero-vignette,
 .hero-scrim {
@@ -279,7 +317,7 @@
   background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 .55 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
 }
 .hero-vignette {
-  background: radial-gradient(ellipse 85% 80% at 62% 48%, transparent 45%, rgba(8, 20, 13, 0.7) 100%);
+  background: radial-gradient(ellipse 85% 80% at 66% 52%, transparent 48%, rgba(8, 20, 13, 0.65) 100%);
 }
 /* Keeps the headline legible over the photograph. */
 .hero-scrim {
@@ -308,18 +346,7 @@
     filter: none;
   }
 }
-@keyframes float-drift {
-  from {
-    translate: -0.6% 0.8%;
-    scale: 1.01;
-  }
-  to {
-    translate: 0.9% -1.2%;
-    scale: 1.035;
-  }
-}
-.hero-stage.is-paused .hero-cam,
-.hero-stage.is-paused .hero-float {
+.hero-stage.is-paused .hero-cam {
   animation-play-state: paused;
 }
 
@@ -442,8 +469,7 @@
   .spice-layer {
     animation: none;
   }
-  .hero-cam,
-  .hero-float {
+  .hero-cam {
     animation: none !important;
   }
 }

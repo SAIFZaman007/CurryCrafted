@@ -1,3 +1,4 @@
+import { MagneticButtons } from "@/components/magnetic-buttons";
 import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
 import { unstable_rethrow } from "next/navigation";
@@ -40,14 +41,14 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
   return (
     <html lang="en-GB" data-scroll-behavior="smooth">
       <body className="min-h-dvh antialiased">
-        <JsonLd data={{ "@context": "https://schema.org", "@type": "Organization", name: SITE_NAME, url: SITE_URL, logo: `${SITE_URL}/icon.svg` }} />
+        <JsonLd data={{ "@context": "https://schema.org", "@type": "Organization", name: SITE_NAME, url: SITE_URL, logo: `${SITE_URL}/images/logo.png` }} />
         <noscript>
           <style>{`.reveal{opacity:1!important;transform:none!important}`}</style>
         </noscript>
         <StoreProvider initialUser={user} initialPostcode={postcode}>
           <a
             href="#main"
-            className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-gold focus:px-5 focus:py-3 focus:font-semibold focus:text-forest"
+            className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-btn focus:bg-gold focus:px-5 focus:py-3 focus:font-semibold focus:text-forest"
           >
             Skip to content
           </a>
@@ -58,6 +59,7 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
           <CartDrawer />
           <PostcodeModal />
           <Toaster />
+          <MagneticButtons />
         </StoreProvider>
       </body>
     </html>

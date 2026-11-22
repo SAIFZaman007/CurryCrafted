@@ -15,7 +15,7 @@ export default async function AccountLayout({ children }: { children: ReactNode 
         <div className="container-x relative py-10 md:py-14">
           <p className="eyebrow text-gold">My account</p>
           <p className="display mt-3 text-[clamp(2rem,5vw,3.5rem)]">
-            Welcome back, <em className="text-gold">{user.name.split(" ")[0]}.</em>
+            Welcome back, <em className="text-gold-metal pr-[0.1em]">{user.name.split(" ")[0]}.</em>
           </p>
         </div>
       </section>

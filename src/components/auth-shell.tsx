@@ -14,7 +14,7 @@ export function AuthShell({ eyebrow, title, intro, children, footer }: { eyebrow
         <div className="absolute inset-0 bg-gradient-to-t from-forest via-forest/60 to-forest/30" />
         <div className="relative flex h-full flex-col justify-end p-14">
           <p className="display max-w-md text-5xl leading-tight">
-            A little more love in <em className="text-gold">every order.</em>
+            A little more love in <em className="text-gold-metal pr-[0.1em]">every order.</em>
           </p>
           <ul className="mt-8 space-y-3 text-sm text-cream/85">
             {["Earn reward points on every order", "Save addresses and reorder favourites in a tap", "Share your referral link with friends"].map((t) => (

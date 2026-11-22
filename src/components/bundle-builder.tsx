@@ -110,7 +110,7 @@ export function BundleBuilder({ bundles, products, initialSlug, initialRange }: 
             {have === need ? `All ${need} chosen. You can swap by removing one first.` : `Choose ${need - have} more. You can pick the same dish more than once.`}
           </p>
         </div>
-        <span className={cx("rounded-full px-4 py-2 text-sm font-bold tabular-nums", have === need ? "bg-forest text-gold" : "bg-forest/10 text-forest")}>
+        <span className={cx("rounded-chip px-4 py-2 text-sm font-bold tabular-nums", have === need ? "bg-forest text-gold" : "bg-forest/10 text-forest")}>
           {have} / {need}
         </span>
       </div>
@@ -170,7 +170,7 @@ export function BundleBuilder({ bundles, products, initialSlug, initialRange }: 
                 onClick={() => setStep(i)}
                 aria-current={state === "current" ? "step" : undefined}
                 className={cx(
-                  "flex h-14 w-full min-w-[9.5rem] items-center gap-3 rounded-full border px-4 text-left text-sm font-semibold transition-all duration-500 ease-[var(--ease-expo)]",
+                  "flex h-14 w-full min-w-[9.5rem] items-center gap-3 rounded-btn border px-4 text-left text-sm font-semibold transition-all duration-500 ease-[var(--ease-expo)]",
                   state === "current" && "border-forest bg-forest text-cream",
                   state === "done" && "border-forest/20 bg-sage text-forest",
                   state === "todo" && "border-forest/10 bg-white text-charcoal/55",
@@ -201,9 +201,9 @@ export function BundleBuilder({ bundles, products, initialSlug, initialRange }: 
             <div>
               <h2 className="display text-3xl text-forest md:text-4xl">Choose your bundle</h2>
               <p className="mt-1.5 text-sm leading-relaxed text-charcoal/75">Bundles are built from one range at a time, because chilled and frozen meals are delivered separately.</p>
-              <div className="mt-5 inline-grid grid-cols-2 gap-1 rounded-full bg-forest/5 p-1" role="group" aria-label="Bundle range">
+              <div className="mt-5 inline-grid grid-cols-2 gap-1 rounded-btn bg-forest/5 p-1" role="group" aria-label="Bundle range">
                 {(["chilled", "frozen"] as const).map((r) => (
-                  <button key={r} type="button" aria-pressed={range === r} onClick={() => chooseRange(r)} className={cx("flex h-11 items-center gap-2 rounded-full px-6 text-sm font-semibold capitalize transition-colors", range === r ? "bg-forest text-cream" : "text-forest hover:bg-forest/10")}>
+                  <button key={r} type="button" aria-pressed={range === r} onClick={() => chooseRange(r)} className={cx("flex h-11 items-center gap-2 rounded-md px-6 text-sm font-semibold capitalize transition-colors", range === r ? "bg-forest text-cream" : "text-forest hover:bg-forest/10")}>
                     <Icon name={r === "chilled" ? "drop" : "snowflake"} className={cx("h-4 w-4", range === r && "text-gold")} /> {r}
                   </button>
                 ))}
@@ -226,7 +226,7 @@ export function BundleBuilder({ bundles, products, initialSlug, initialRange }: 
                       >
                         <span className="relative block aspect-[16/10] w-full overflow-hidden bg-forest">
                           <Image src={b.image} alt="" fill sizes="(min-width: 768px) 300px, 100vw" className="object-cover transition-transform duration-[1200ms] group-hover:scale-105" />
-                          <span className="absolute left-3 top-3 rounded-full bg-cream/95 px-3 py-1 text-[0.66rem] font-bold uppercase tracking-wider text-forest">{b.serves}</span>
+                          <span className="absolute left-3 top-3 rounded-chip bg-cream/95 px-3 py-1 text-[0.66rem] font-bold uppercase tracking-wider text-forest">{b.serves}</span>
                           {active && (
                             <span className="pop absolute right-3 top-3 grid h-8 w-8 place-items-center rounded-full bg-gold text-forest">
                               <Icon name="check" className="h-4 w-4" />

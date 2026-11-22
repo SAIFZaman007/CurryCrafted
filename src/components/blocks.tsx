@@ -21,7 +21,7 @@ export function BundleCard({ bundle, tone = "dark" }: { bundle: BundleDTO; tone?
         <Image src={bundle.image} alt="" fill sizes="(min-width: 1024px) 400px, 100vw" className="object-cover transition-transform duration-[1400ms] ease-[var(--ease-expo)] group-hover:scale-[1.07]" />
         <span className="absolute inset-0 bg-gradient-to-t from-forest/80 via-forest/10 to-transparent" />
         <RangeBadge range={bundle.range} className="absolute left-4 top-4" />
-        <span className="absolute bottom-4 left-4 rounded-full bg-cream/95 px-3 py-1 text-[0.68rem] font-bold uppercase tracking-wider text-forest">{bundle.serves}</span>
+        <span className="absolute bottom-4 left-4 rounded-chip bg-cream/95 px-3 py-1 text-[0.68rem] font-bold uppercase tracking-wider text-forest">{bundle.serves}</span>
       </div>
       <div className="flex flex-1 flex-col p-6">
         <h3 className={cx("display text-[1.7rem]", dark ? "text-cream" : "text-forest")}>{bundle.name}</h3>
@@ -94,7 +94,7 @@ export function CollectionBanner({
 export function InfoCard({ icon, title, children, tone = "light" }: { icon: string; title: string; children: ReactNode; tone?: "light" | "sage" }) {
   return (
     <div className={cx("h-full rounded-3xl border border-forest/10 p-6 md:p-7", tone === "light" ? "bg-white" : "bg-sage")}>
-      <span className="grid h-12 w-12 place-items-center rounded-full bg-forest text-gold">
+      <span className="grid h-12 w-12 place-items-center rounded-tile bg-forest text-gold">
         <Icon name={icon} />
       </span>
       <h3 className="display mt-5 text-2xl text-forest">{title}</h3>

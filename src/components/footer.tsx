@@ -87,7 +87,7 @@ function NewsletterForm() {
       <label htmlFor="newsletter-email" className="sr-only">
         Email address
       </label>
-      <div className="flex rounded-full border border-cream/25 bg-cream/5 p-1 focus-within:border-gold">
+      <div className="flex rounded-btn border border-cream/25 bg-cream/5 p-1 focus-within:border-gold">
         <input
           id="newsletter-email"
           type="email"
@@ -99,7 +99,7 @@ function NewsletterForm() {
           aria-describedby={error ? "newsletter-error" : undefined}
           className="h-11 min-w-0 flex-1 bg-transparent px-4 text-sm text-cream placeholder:text-cream/45 focus:outline-none"
         />
-        <button type="submit" disabled={state === "loading"} className="flex h-11 flex-none items-center gap-2 rounded-full bg-gold px-5 text-sm font-semibold text-forest transition-colors hover:bg-gold-soft disabled:opacity-60">
+        <button type="submit" disabled={state === "loading"} className="flex h-11 flex-none items-center gap-2 btn-solid rounded-md bg-gold-metal px-5 text-sm font-semibold text-forest hover:bg-[position:100%_50%] focus-visible:bg-[position:100%_50%] disabled:opacity-60">
           {state === "loading" ? <span className="spinner" /> : "Subscribe"}
         </button>
       </div>
@@ -152,7 +152,7 @@ export function Footer() {
         <div className="grid gap-12 lg:grid-cols-12">
           <div className="lg:col-span-4">
             <Link href="/" aria-label="Curry Crafted home" className="inline-block">
-              <Logo />
+              <Logo stacked />
             </Link>
             <p className="mt-5 max-w-sm text-sm leading-relaxed text-cream/75">
               Handcrafted chilled meals and frozen favourites, cooked in small batches and delivered to your door. Order ahead, choose your day, and enjoy real flavour whenever you&apos;re ready.
@@ -183,7 +183,7 @@ export function Footer() {
               <ul className="mt-4 flex flex-wrap gap-2">
                 {["Instagram", "Facebook", "TikTok"].map((s) => (
                   <li key={s}>
-                    <span title="Profile link to be supplied by Curry Crafted" className="inline-flex items-center gap-2 rounded-full border border-dashed border-cream/25 px-4 py-2 text-xs font-medium text-cream/60">
+                    <span title="Profile link to be supplied by Curry Crafted" className="inline-flex items-center gap-2 rounded-btn border border-cream/20 bg-cream/[0.03] px-4 py-2 text-xs font-medium text-cream/70">
                       {s} <span className="text-[0.6rem] uppercase tracking-widest text-cream/45">link pending</span>
                     </span>
                   </li>

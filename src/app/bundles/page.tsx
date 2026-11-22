@@ -16,7 +16,7 @@ export default async function BundlesPage({ searchParams }: { searchParams: Prom
         eyebrow="Build your box"
         title={
           <>
-            Make Every Meal a Little <em className="text-gold">More Special.</em>
+            Make Every Meal a Little <em className="text-gold-metal pr-[0.1em]">More Special.</em>
           </>
         }
         intro="Pick a bundle, fill it with the mains and sides you love, and watch your saving add up. One fixed price, your choice of dishes."

@@ -100,7 +100,7 @@ export function ProductCard({ product, index = 0, priority = false }: { product:
         </span>
       </Link>
       <RangeBadge range={product.range} className="absolute left-3 top-3 shadow-sm" />
-      {!product.available && <span className="absolute right-3 top-3 rounded-full bg-charcoal px-3 py-1.5 text-[0.62rem] font-bold uppercase tracking-wider text-cream">Unavailable</span>}
+      {!product.available && <span className="absolute right-3 top-3 rounded-chip bg-charcoal px-3 py-1.5 text-[0.62rem] font-bold uppercase tracking-wider text-cream">Unavailable</span>}
 
       <div className="flex flex-1 flex-col p-5">
         <div className="flex items-center justify-between gap-3">

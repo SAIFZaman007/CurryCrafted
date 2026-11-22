@@ -29,7 +29,7 @@ export default async function ReferPage() {
         <div className="grain absolute inset-0 opacity-60" aria-hidden="true" />
         <div className="relative">
           <p className="eyebrow text-gold">Share the flavour</p>
-          <h2 className="display mt-3 max-w-2xl text-4xl md:text-5xl">Give {referral.friendPoints} points. <em className="text-gold">Get {referral.referrerPoints}.</em></h2>
+          <h2 className="display mt-3 max-w-2xl text-4xl md:text-5xl">Give {referral.friendPoints} points. <em className="text-gold-metal pr-[0.1em]">Get {referral.referrerPoints}.</em></h2>
           <p className="mt-4 max-w-2xl text-base leading-relaxed text-cream/85">
             Invite a friend with your personal link. When they create an account and place a first order of {formatPrice(referral.minQualifyingOrderPence)} or more, you receive {referral.referrerPoints} points ({formatPrice(referral.referrerPoints * rewards.pointValuePence)}) and they receive {referral.friendPoints} points.
           </p>
@@ -68,7 +68,7 @@ export default async function ReferPage() {
                     <p className="font-semibold text-forest">{parts[0]}{parts[1] ? ` ${parts[1][0]}.` : ""}</p>
                     <p className="text-xs text-charcoal/65">Joined {formatDateTime(row.createdAt)}</p>
                   </div>
-                  <span className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-[0.68rem] font-bold uppercase tracking-wider ${done ? "bg-forest text-gold" : "bg-forest/10 text-forest"}`}>
+                  <span className={`inline-flex items-center gap-1.5 rounded-chip px-3 py-1.5 text-[0.68rem] font-bold uppercase tracking-wider ${done ? "bg-forest text-gold" : "bg-forest/10 text-forest"}`}>
                     <Icon name={done ? "check" : "clock"} className="h-3.5 w-3.5" />
                     {done ? `Qualified · +${row.rewardPoints} points` : "Registered · awaiting qualifying order"}
                   </span>

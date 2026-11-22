@@ -123,7 +123,7 @@ export function FrozenEstimate({ data, compact = false }: { data: ScheduleDTO; c
   return (
     <dl className={cx("grid gap-4", !compact && "sm:grid-cols-2")}>
       <div className="flex items-start gap-3">
-        <span className="grid h-10 w-10 flex-none place-items-center rounded-full bg-forest text-gold">
+        <span className="grid h-10 w-10 flex-none place-items-center rounded-tile bg-forest text-gold">
           <Icon name="box" className="h-4 w-4" />
         </span>
         <div>
@@ -132,7 +132,7 @@ export function FrozenEstimate({ data, compact = false }: { data: ScheduleDTO; c
         </div>
       </div>
       <div className="flex items-start gap-3">
-        <span className="grid h-10 w-10 flex-none place-items-center rounded-full bg-forest text-gold">
+        <span className="grid h-10 w-10 flex-none place-items-center rounded-tile bg-forest text-gold">
           <Icon name="truck" className="h-4 w-4" />
         </span>
         <div>

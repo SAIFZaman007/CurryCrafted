@@ -33,5 +33,5 @@ export function proxy(request: NextRequest) {
 }
 
 export const config = {
-  matcher: [{ source: "/((?!api/|_next/static|_next/image|images/|videos/|favicon.ico|icon.svg|robots.txt|sitemap.xml).*)", missing: [{ type: "header", key: "next-router-prefetch" }, { type: "header", key: "purpose", value: "prefetch" }] }],
+  matcher: [{ source: "/((?!api/|_next/static|_next/image|images/|videos/|favicon.ico|icon.png|apple-icon.png|robots.txt|sitemap.xml).*)", missing: [{ type: "header", key: "next-router-prefetch" }, { type: "header", key: "purpose", value: "prefetch" }] }],
 };

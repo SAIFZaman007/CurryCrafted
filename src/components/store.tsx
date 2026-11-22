@@ -320,12 +320,12 @@ export function Toaster() {
                 t.action?.onClick();
                 dismissToast(t.id);
               }}
-              className="flex-none rounded-full px-3 py-2 text-xs font-bold uppercase tracking-wider text-gold underline-offset-4 hover:underline"
+              className="flex-none rounded-btn px-3 py-2 text-xs font-bold uppercase tracking-wider text-gold underline-offset-4 hover:underline"
             >
               {t.action.label}
             </button>
           )}
-          <button type="button" onClick={() => dismissToast(t.id)} aria-label="Dismiss notification" className="grid h-9 w-9 flex-none place-items-center rounded-full opacity-70 hover:opacity-100">
+          <button type="button" onClick={() => dismissToast(t.id)} aria-label="Dismiss notification" className="grid h-9 w-9 flex-none place-items-center rounded-btn opacity-70 hover:opacity-100">
             <Icon name="close" className="h-4 w-4" />
           </button>
         </div>

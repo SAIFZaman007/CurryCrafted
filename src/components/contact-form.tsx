@@ -45,7 +45,7 @@ export function ContactForm() {
   if (state === "done") {
     return (
       <div role="status" className="rounded-3xl bg-sage p-8 text-center">
-        <span className="pop mx-auto grid h-14 w-14 place-items-center rounded-full bg-forest text-gold">
+        <span className="pop mx-auto grid h-14 w-14 place-items-center rounded-tile bg-forest text-gold">
           <Icon name="check" className="h-7 w-7" />
         </span>
         <p className="display mt-5 text-3xl text-forest">Message received</p>

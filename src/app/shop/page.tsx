@@ -19,7 +19,7 @@ export default async function ShopPage({ searchParams }: { searchParams: Promise
         eyebrow="The full menu"
         title={
           <>
-            Shop <em className="text-gold">Every Dish.</em>
+            Shop <em className="text-gold-metal pr-[0.1em]">Every Dish.</em>
           </>
         }
         intro="Curries, sides and accompaniments from our kitchen. Every dish is clearly marked Chilled or Frozen, because the two ranges are delivered differently."

@@ -25,7 +25,7 @@ export default function OurStoryPage() {
           <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Our Story" }]} tone="light" />
           <Eyebrow tone="light" className="mt-10">Our story</Eyebrow>
           <h1 className="display mt-5 max-w-4xl text-[clamp(2.8rem,7.5vw,6rem)]">
-            Crafted with Care. <em className="text-gold">Made for Everyday Living.</em>
+            Crafted with Care. <em className="text-gold-metal pr-[0.1em]">Made for Everyday Living.</em>
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-cream/85">Curry Crafted exists for the nights you want something genuinely good and have no time to cook it. We do the slow part. You get the best part.</p>
         </div>
@@ -47,7 +47,7 @@ export default function OurStoryPage() {
           <div className="grid gap-6 md:grid-cols-3">
             {PILLARS.map((p, i) => (
               <Reveal key={p.title} delay={i * 100} className="rounded-3xl bg-white p-8 shadow-[var(--shadow-card)]">
-                <span className="grid h-14 w-14 place-items-center rounded-full bg-forest text-gold"><Icon name={p.icon} className="h-6 w-6" /></span>
+                <span className="grid h-14 w-14 place-items-center rounded-tile bg-forest text-gold"><Icon name={p.icon} className="h-6 w-6" /></span>
                 <h2 className="display mt-6 text-3xl text-forest">{p.title}</h2>
                 <p className="mt-3 text-base leading-relaxed text-charcoal/80">{p.body}</p>
               </Reveal>
@@ -90,7 +90,7 @@ export default function OurStoryPage() {
 
       <section className="on-dark bg-forest py-20 text-center text-cream md:py-28">
         <div className="container-x">
-          <h2 className="display mx-auto max-w-3xl text-[clamp(2.4rem,6vw,4.5rem)]">Taste what taking your time <em className="text-gold">tastes like.</em></h2>
+          <h2 className="display mx-auto max-w-3xl text-[clamp(2.4rem,6vw,4.5rem)]">Taste what taking your time <em className="text-gold-metal pr-[0.1em]">tastes like.</em></h2>
           <div className="mt-9 flex flex-wrap justify-center gap-3">
             <Link href="/shop" className={btn("gold", "lg")}>Shop the menu</Link>
             <Link href="/bundles" className={btn("outline-light", "lg")}>Build a bundle</Link>

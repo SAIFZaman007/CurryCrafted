@@ -71,10 +71,10 @@ export default async function LegalPage({ params }: Props) {
           <ul className="no-scrollbar -mx-5 flex gap-2 overflow-x-auto px-5 lg:mx-0 lg:block lg:space-y-1 lg:px-0">
             {Object.entries(DOCS).map(([key, d]) => (
               <li key={key} className="flex-none">
-                <Link href={`/legal/${key}`} aria-current={key === slug ? "page" : undefined} className={`flex h-11 items-center whitespace-nowrap rounded-full px-4 text-sm font-semibold ${key === slug ? "bg-forest text-cream" : "border border-forest/15 bg-white text-forest hover:bg-forest/5 lg:border-0 lg:bg-transparent"}`}>{d.title}</Link>
+                <Link href={`/legal/${key}`} aria-current={key === slug ? "page" : undefined} className={`flex h-11 items-center whitespace-nowrap rounded-btn px-4 text-sm font-semibold ${key === slug ? "bg-forest text-cream" : "border border-forest/15 bg-white text-forest hover:bg-forest/5 lg:border-0 lg:bg-transparent"}`}>{d.title}</Link>
               </li>
             ))}
-            <li className="flex-none"><Link href="/delivery" className="flex h-11 items-center whitespace-nowrap rounded-full border border-forest/15 bg-white px-4 text-sm font-semibold text-forest hover:bg-forest/5 lg:border-0 lg:bg-transparent">Delivery Policy</Link></li>
+            <li className="flex-none"><Link href="/delivery" className="flex h-11 items-center whitespace-nowrap rounded-btn border border-forest/15 bg-white px-4 text-sm font-semibold text-forest hover:bg-forest/5 lg:border-0 lg:bg-transparent">Delivery Policy</Link></li>
           </ul>
         </nav>
         <article className="max-w-3xl">

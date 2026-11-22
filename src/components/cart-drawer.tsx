@@ -58,7 +58,7 @@ export function LineItem({ line, compact = false, onNavigate }: { line: QuoteLin
           ) : (
             <span className="text-xs font-semibold uppercase tracking-wider text-charcoal/60">Unavailable</span>
           )}
-          <button type="button" onClick={() => removeLine(line.key)} className="flex h-9 items-center gap-1.5 rounded-full px-2.5 text-xs font-semibold text-charcoal/70 transition-colors hover:bg-danger-soft hover:text-danger" aria-label={`Remove ${line.name}`}>
+          <button type="button" onClick={() => removeLine(line.key)} className="flex h-9 items-center gap-1.5 rounded-btn px-2.5 text-xs font-semibold text-charcoal/70 transition-colors hover:bg-danger-soft hover:text-danger" aria-label={`Remove ${line.name}`}>
             <Icon name="trash" className="h-4 w-4" /> Remove
           </button>
         </div>
@@ -128,7 +128,7 @@ export function GroupHeader({ group, compact = false }: { group: GroupSummary; c
 export function EmptyBasket({ onNavigate }: { onNavigate?: () => void }) {
   return (
     <div className="flex flex-col items-center px-6 py-14 text-center">
-      <span className="grid h-20 w-20 place-items-center rounded-full bg-sage text-forest">
+      <span className="grid h-20 w-20 place-items-center rounded-tile bg-sage text-forest">
         <Icon name="bag" className="h-9 w-9" />
       </span>
       <p className="display mt-6 text-3xl text-forest">Your basket is empty</p>
@@ -168,7 +168,7 @@ export function CartDrawer() {
           <h2 className="display text-2xl">
             Your basket <span className="font-sans text-sm font-medium text-cream/70">({count})</span>
           </h2>
-          <button type="button" onClick={close} aria-label="Close basket" className="grid h-11 w-11 place-items-center rounded-full hover:bg-cream/10">
+          <button type="button" onClick={close} aria-label="Close basket" className="grid h-11 w-11 place-items-center rounded-btn hover:bg-cream/10">
             <Icon name="close" />
           </button>
         </header>

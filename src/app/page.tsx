@@ -21,7 +21,7 @@ function Hero() {
     <section className="on-dark relative overflow-hidden bg-forest text-cream">
       <HeroMedia />
 
-      <div className="container-x relative grid items-center min-h-[calc(100svh-7.5rem)] gap-2 pb-[27rem] pt-10 md:pb-[30rem] lg:pb-40 lg:grid-cols-12 lg:gap-6 lg:pt-4">
+      <div className="container-x relative grid items-center min-h-[calc(100svh-7.5rem)] gap-2 pb-[27rem] pt-14 md:pb-[30rem] lg:pb-40 lg:grid-cols-12 lg:gap-6 lg:pt-16">
         <div className="relative z-10 lg:col-span-6">
           <div className="fade-up" style={{ "--i": -2 } as CSSProperties}>
             <Eyebrow tone="light">Chilled &amp; frozen, made to order ahead</Eyebrow>
@@ -31,10 +31,10 @@ function Hero() {
               <span>Real Flavour.</span>
             </span>
             <span className="hero-line" style={{ "--i": 1 } as CSSProperties}>
-              <span className="italic text-gold">Ready When</span>
+              <span className="italic text-gold-metal pr-[0.12em]">Ready When</span>
             </span>
             <span className="hero-line" style={{ "--i": 2 } as CSSProperties}>
-              <span className="italic text-gold">You Are.</span>
+              <span className="italic text-gold-metal pr-[0.12em]">You Are.</span>
             </span>
           </h1>
           <p className="fade-up mt-7 max-w-xl text-base leading-relaxed text-cream/85 md:text-lg" style={{ "--i": 4 } as CSSProperties}>
@@ -210,7 +210,7 @@ export default async function HomePage() {
                 },
               ].map((step, i) => (
                 <li key={step.title} className="flex gap-4">
-                  <span className="display grid h-11 w-11 flex-none place-items-center rounded-full border border-gold-muted text-lg text-forest">{i + 1}</span>
+                  <span className="display grid h-11 w-11 flex-none place-items-center rounded-tile border border-gold-muted text-lg text-forest">{i + 1}</span>
                   <div>
                     <p className="font-semibold text-forest">{step.title}</p>
                     <p className="mt-1 text-sm leading-relaxed text-charcoal/75">{step.body}</p>
@@ -237,7 +237,7 @@ export default async function HomePage() {
         <div className="container-x">
           <div className="grid gap-6 lg:grid-cols-12 lg:gap-8">
             <Reveal className="relative aspect-[4/3] overflow-hidden rounded-[2rem] lg:col-span-7 lg:aspect-auto lg:min-h-[34rem]">
-              <AmbientVideo src="/videos/kitchen.mp4" poster="/videos/kitchen-poster.jpg" alt="A chef stirring a large pot of curry in a professional kitchen" sizes="(min-width: 1024px) 58vw, 100vw" />
+              <AmbientVideo src="/videos/our-kitchen.mp4" poster="/videos/our-kitchen-poster.jpg" alt="Curry Crafted chefs plating dishes and finishing a curry with fresh coriander in the kitchen" objectPosition="25% 50%" sizes="(min-width: 1024px) 58vw, 100vw" />
             </Reveal>
             <Reveal delay={100} className="flex flex-col justify-center lg:col-span-5 lg:pl-6">
               <SectionHeading eyebrow="Our kitchen" title={<span id="story-heading">Crafted with Care. Made for Everyday Living.</span>} />
@@ -258,7 +258,10 @@ export default async function HomePage() {
               <AmbientVideo src="/videos/unboxing.mp4" poster="/videos/unboxing-poster.jpg" alt="An insulated delivery box being opened to reveal sealed meal trays" sizes="(min-width: 1024px) 33vw, 50vw" />
               <p className="on-dark absolute inset-x-0 bottom-0 bg-gradient-to-t from-forest/90 to-transparent p-6 pt-16 text-sm font-medium text-cream">Packed in insulated boxes to arrive at the right temperature.</p>
             </Reveal>
-            <Reveal delay={200} className="flex flex-col justify-between rounded-[2rem] bg-forest p-8 text-cream sm:col-span-2 lg:col-span-4">
+            <Reveal delay={200} className="relative isolate flex flex-col justify-between overflow-hidden rounded-[2rem] bg-forest p-8 text-cream sm:col-span-2 lg:col-span-4">
+              {/* Portrait of our chef, softened just enough to sit behind text. The scrim keeps the quote legible at every size. */}
+              <Image src="/images/chef-portrait.jpg" alt="" aria-hidden="true" fill sizes="(min-width: 1024px) 33vw, 100vw" className="-z-20 object-cover object-[50%_22%]" />
+              <div className="absolute inset-0 -z-10 bg-gradient-to-t from-forest/95 via-forest/60 to-forest/5" aria-hidden="true" />
               <Icon name="sparkle" className="h-8 w-8 text-gold" />
               <p className="display mt-10 text-3xl italic leading-tight text-cream md:text-[2.1rem]">Good curry can&apos;t be hurried. So we take our time, and give you yours back.</p>
               <p className="eyebrow mt-8 text-gold">The Curry Crafted kitchen</p>
@@ -273,8 +276,8 @@ export default async function HomePage() {
           <Reveal className="lg:col-span-5">
             <SectionHeading eyebrow="Customer rewards" title={<span id="rewards-heading">A Little More Love in Every Order.</span>} intro="Create a free account and every order earns points towards money off the next one. No tiers, no fuss." />
             {rewards.doublePoints.active && (
-              <div className="mt-7 flex items-start gap-4 rounded-3xl bg-forest p-5 text-cream">
-                <span className="display grid h-14 w-14 flex-none place-items-center rounded-full bg-gold text-2xl font-semibold text-forest">2×</span>
+              <div className="mt-7 flex items-start gap-4 rounded-2xl bg-forest p-5 text-cream ring-1 ring-gold/15">
+                <span className="display flex h-14 w-14 flex-none items-center justify-center rounded-tile bg-gold-metal text-2xl font-semibold leading-none text-forest">2<span className="ml-0.5 text-base font-normal">×</span></span>
                 <div>
                   <p className="eyebrow text-gold">Double-points promotion</p>
                   <p className="mt-1.5 font-semibold">{rewards.doublePoints.label}</p>
@@ -283,8 +286,9 @@ export default async function HomePage() {
               </div>
             )}
             <div className="mt-8 flex flex-wrap items-center gap-4">
-              <Link href="/register" className={btn("primary", "lg")}>
+              <Link href="/register" className={btn("primary", "lg", "group")}>
                 Join Rewards
+                <Icon name="arrow-right" className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
               </Link>
               <Link href="/login" className="text-sm font-semibold text-forest underline underline-offset-4">
                 Already a member? Sign in
@@ -294,8 +298,8 @@ export default async function HomePage() {
           </Reveal>
           <div className="grid gap-5 sm:grid-cols-2 lg:col-span-7">
             {rewardCards.map((card, i) => (
-              <Reveal key={card.title} delay={i * 90} className="rounded-3xl bg-white p-6 shadow-[var(--shadow-card)] md:p-7">
-                <span className="grid h-12 w-12 place-items-center rounded-full bg-forest text-gold">
+              <Reveal key={card.title} delay={i * 90} className="rounded-2xl bg-white p-6 shadow-[var(--shadow-card)] md:p-7">
+                <span className="grid h-12 w-12 place-items-center rounded-tile bg-forest text-gold">
                   <Icon name={card.icon} />
                 </span>
                 <h3 className="display mt-5 text-2xl text-forest">{card.title}</h3>
@@ -339,7 +343,7 @@ export default async function HomePage() {
           <Reveal className="max-w-3xl">
             <Eyebrow tone="light">Order ahead</Eyebrow>
             <h2 id="cta-heading" className="display mt-5 text-[clamp(2.6rem,6.5vw,5.2rem)] text-cream">
-              Good Food Is Always <em className="text-gold">Worth Planning For.</em>
+              Good Food Is Always <em className="text-gold-metal pr-[0.12em]">Worth Planning For.</em>
             </h2>
             <div className="mt-10 flex flex-wrap gap-3">
               <Link href="/shop" className={btn("gold", "lg")}>

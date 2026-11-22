@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import type { ReactNode } from "react";
 import { DIETARY, SPICE_LABELS, formatPrice, type Range } from "@/lib/types";
 
@@ -14,12 +15,12 @@ type BtnVariant = "primary" | "gold" | "outline" | "outline-light" | "ghost" | "
 type BtnSize = "sm" | "md" | "lg";
 
 const BTN_BASE =
-  "inline-flex items-center justify-center gap-2 rounded-full font-semibold tracking-wide whitespace-nowrap select-none transition-[background-color,color,border-color,transform,box-shadow] duration-300 ease-[var(--ease-expo)] active:scale-[0.98] disabled:opacity-45 disabled:active:scale-100 disabled:pointer-events-none";
+  "inline-flex items-center justify-center gap-2 rounded-btn font-semibold tracking-wide whitespace-nowrap select-none transition-[background-color,color,border-color,transform,box-shadow] duration-300 ease-[var(--ease-expo)] active:scale-[0.98] disabled:opacity-45 disabled:active:scale-100 disabled:pointer-events-none";
 const BTN_VARIANTS: Record<BtnVariant, string> = {
-  primary: "bg-forest text-cream hover:bg-forest-600 shadow-[0_10px_24px_-14px_rgba(15,36,24,0.8)]",
-  gold: "bg-gold text-forest hover:bg-gold-soft shadow-[0_12px_30px_-14px_rgba(232,196,106,0.9)]",
+  primary: "btn-solid bg-emerald-flow text-cream hover:bg-[position:100%_50%] hover:text-gold-soft focus-visible:bg-[position:100%_50%] shadow-[0_10px_24px_-14px_rgba(15,36,24,0.8)]",
+  gold: "btn-solid bg-gold-metal text-forest hover:bg-[position:100%_50%] focus-visible:bg-[position:100%_50%] shadow-[inset_0_1px_0_rgba(255,240,180,0.55),inset_0_-1px_0_rgba(90,60,8,0.35),0_12px_30px_-14px_rgba(232,196,106,0.9)]",
   outline: "border border-forest/25 text-forest hover:border-forest hover:bg-forest hover:text-cream",
-  "outline-light": "border border-cream/35 text-cream hover:border-gold hover:text-gold",
+  "outline-light": "border border-gold/30 bg-forest/40 text-cream backdrop-blur-sm hover:border-gold hover:text-gold",
   ghost: "text-forest hover:bg-forest/5",
   danger: "border border-danger/30 text-danger hover:bg-danger hover:text-white",
 };
@@ -34,7 +35,7 @@ export function btn(variant: BtnVariant = "primary", size: BtnSize = "md", extra
 }
 
 export const inputClass =
-  "h-12 w-full rounded-xl border border-forest/20 bg-white px-4 text-[0.95rem] text-charcoal placeholder:text-charcoal/45 transition-colors hover:border-forest/40 focus:border-forest focus:outline-none focus:ring-2 focus:ring-gold/60 aria-[invalid=true]:border-danger aria-[invalid=true]:ring-danger/20";
+  "h-12 w-full rounded-btn border border-forest/20 bg-white px-4 text-[0.95rem] text-charcoal placeholder:text-charcoal/45 transition-colors hover:border-forest/40 focus:border-forest focus:outline-none focus:ring-2 focus:ring-gold/60 aria-[invalid=true]:border-danger aria-[invalid=true]:ring-danger/20";
 
 export function Field({
   label,
@@ -129,25 +130,28 @@ export function Icon({ name, className = "h-5 w-5" }: { name: string; className?
 /* Brand                                                               */
 /* ------------------------------------------------------------------ */
 
-/** Stand-in wordmark. Replace with the supplied Curry Crafted logo artwork when the file is available. */
-export function Logo({ tone = "light", compact = false }: { tone?: "light" | "dark"; compact?: boolean }) {
-  const text = tone === "light" ? "text-cream" : "text-forest";
+/**
+ * Curry Crafted brand mark.
+ *  - default: the horizontal Royal White lockup supplied for the navigation bar (header, menu, checkout)
+ *  - stacked: the full stacked lockup, with a light variant for dark backgrounds (footer and larger placements)
+ */
+export function Logo({ tone = "light", compact = false, stacked = false }: { tone?: "light" | "dark"; compact?: boolean; stacked?: boolean }) {
+  const onDark = tone === "light";
+  if (stacked) {
+    return <Image src={onDark ? "/images/logo-light.png" : "/images/logo.png"} alt="Curry Crafted" width={786} height={642} sizes="180px" className="h-auto w-36 md:w-44" />;
+  }
+  /* Horizontal "Royal White" lockup for the navigation bar: emblem plus a white metallic wordmark on a
+     transparent background, made for the dark emerald header. */
   return (
-    <span className="inline-flex items-center gap-2.5 md:gap-3">
-      <svg viewBox="0 0 48 48" className={cx("flex-none transition-all duration-500", compact ? "h-9 w-9" : "h-9 w-9 md:h-11 md:w-11")} aria-hidden="true">
-        <circle cx="24" cy="24" r="22.5" fill="none" stroke="#E8C46A" strokeWidth="1" />
-        <circle cx="24" cy="24" r="19" fill="none" stroke="#E8C46A" strokeWidth="0.5" opacity="0.55" />
-        <path d="M12.500 25.500h23a11.500 11.500 0 0 1-23 0z" fill="#E8C46A" />
-        <path d="M10.500 25.500h27" stroke="#E8C46A" strokeWidth="1.400" strokeLinecap="round" />
-        <path d="M19 20.500c-1.600-1.800 1.600-3.200 0-5M24 20.500c-1.600-2.200 1.600-4 0-6.500M29 20.500c-1.600-1.800 1.600-3.200 0-5" fill="none" stroke="#E8C46A" strokeWidth="1.200" strokeLinecap="round" />
-      </svg>
-      <span className="flex flex-col leading-none">
-        <span className={cx("display font-medium tracking-tight transition-all duration-500", text, compact ? "text-[1.15rem]" : "text-[1.15rem] md:text-[1.35rem]")}>
-          Curry <em className="font-normal text-gold-muted">Crafted</em>
-        </span>
-        <span className={cx("mt-1 text-[0.56rem] font-bold uppercase tracking-[0.34em]", tone === "light" ? "text-cream/60" : "text-forest/60")}>Chilled &amp; Frozen</span>
-      </span>
-    </span>
+    <Image
+      src="/images/logo-navbar.png"
+      alt="Curry Crafted"
+      width={900}
+      height={278}
+      sizes="(min-width: 1280px) 240px, (min-width: 1024px) 180px, 160px"
+      priority
+      className={cx("w-auto flex-none transition-all duration-500", compact ? "h-11 sm:h-12" : "h-12 lg:h-14 xl:h-[4.5rem]")}
+    />
   );
 }
 
@@ -160,7 +164,7 @@ export function RangeBadge({ range, size = "md", className }: { range: Range; si
   return (
     <span
       className={cx(
-        "inline-flex items-center gap-1.5 rounded-full font-bold uppercase tracking-[0.14em]",
+        "inline-flex items-center gap-1.5 rounded-chip font-bold uppercase tracking-[0.14em]",
         size === "sm" ? "px-2.5 py-1 text-[0.6rem]" : "px-3 py-1.5 text-[0.66rem]",
         chilled ? "bg-sage text-forest ring-1 ring-forest/15" : "bg-forest text-cream ring-1 ring-gold/50",
         className,
@@ -202,7 +206,7 @@ export function DietaryTags({ dietary, className }: { dietary: string[]; classNa
   return (
     <span className={cx("inline-flex flex-wrap gap-1.5", className)}>
       {shown.map((d) => (
-        <span key={d} className="inline-flex items-center rounded-full border border-forest/20 bg-white px-2.5 py-0.5 text-[0.68rem] font-semibold text-forest">
+        <span key={d} className="inline-flex items-center rounded-chip border border-forest/20 bg-white px-2.5 py-0.5 text-[0.68rem] font-semibold text-forest">
           {DIETARY[d].label}
         </span>
       ))}

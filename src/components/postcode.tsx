@@ -61,7 +61,7 @@ function PostcodeFields({ form, tone, id }: { form: ReturnType<typeof usePostcod
             aria-invalid={bad || undefined}
             aria-describedby={bad ? `${id}-error` : undefined}
             className={cx(
-              "h-14 w-full rounded-full border pl-12 pr-5 text-base font-semibold uppercase tracking-[0.12em] placeholder:font-medium placeholder:normal-case placeholder:tracking-normal focus:outline-none focus:ring-2 focus:ring-gold/70",
+              "h-14 w-full rounded-btn border pl-12 pr-5 text-base font-semibold uppercase tracking-[0.12em] placeholder:font-medium placeholder:normal-case placeholder:tracking-normal focus:outline-none focus:ring-2 focus:ring-gold/70",
               tone === "dark" ? "border-cream/25 bg-cream/5 text-cream placeholder:text-cream/45 focus:border-gold" : "border-forest/20 bg-white text-forest placeholder:text-charcoal/45 focus:border-forest",
               bad && (tone === "dark" ? "border-gold-soft" : "border-danger"),
             )}
@@ -102,7 +102,7 @@ function RangeTile({ range, state, title, body, href, cta, tone }: { range: "chi
         <span
           key={state}
           className={cx(
-            "pop inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[0.68rem] font-bold uppercase tracking-wider",
+            "pop inline-flex items-center gap-1.5 rounded-chip px-2.5 py-1 text-[0.68rem] font-bold uppercase tracking-wider",
             state === "yes" && "bg-forest text-gold",
             state === "no" && "bg-charcoal/10 text-charcoal",
             state === "unknown" && (tone === "dark" ? "bg-cream/10 text-cream/80" : "bg-forest/5 text-forest/75"),
@@ -134,7 +134,7 @@ export function PostcodeChecker({ tone = "light", id = "postcode-check", showTil
       {showForm ? (
         <PostcodeFields form={form} tone={tone} id={id} />
       ) : (
-        <div className={cx("flex flex-wrap items-center justify-between gap-3 rounded-full border py-2 pl-5 pr-2", tone === "dark" ? "border-cream/20 bg-cream/5 text-cream" : "border-forest/15 bg-white text-forest")} role="status">
+        <div className={cx("flex flex-wrap items-center justify-between gap-3 rounded-btn border py-2 pl-5 pr-2", tone === "dark" ? "border-cream/20 bg-cream/5 text-cream" : "border-forest/15 bg-white text-forest")} role="status">
           <p className="flex items-center gap-2.5 text-sm">
             <Icon name="pin" className={cx("h-5 w-5 flex-none", tone === "dark" ? "text-gold" : "text-forest/60")} />
             Showing delivery options for <strong className="text-base font-bold tracking-[0.1em]">{postcode.postcode}</strong>

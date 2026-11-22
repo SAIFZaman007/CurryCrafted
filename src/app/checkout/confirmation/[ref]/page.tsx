@@ -71,7 +71,7 @@ export default async function ConfirmationPage({ params }: { params: Promise<{ r
           </span>
           <p className="eyebrow mt-6 text-gold">Step 06 · Order confirmed</p>
           <h1 className="display mt-3 text-[clamp(2.4rem,6vw,4.5rem)]">
-            Thank you, <em className="text-gold">{order.name.split(" ")[0]}.</em>
+            Thank you, <em className="text-gold-metal pr-[0.1em]">{order.name.split(" ")[0]}.</em>
           </h1>
           <p className="mt-4 max-w-2xl text-base leading-relaxed text-cream/85 md:text-lg">Your order is confirmed and our kitchen has it. Keep your order reference handy in case you need to get in touch.</p>
           <dl className="mt-8 grid max-w-3xl gap-4 sm:grid-cols-3">

@@ -81,7 +81,7 @@ function SearchPanel({ onClose }: { onClose: () => void }) {
               autoComplete="off"
               className="display h-14 min-w-0 flex-1 bg-transparent text-2xl text-forest placeholder:text-forest/35 focus:outline-none md:text-4xl"
             />
-            <button type="button" onClick={onClose} aria-label="Close search" className="grid h-11 w-11 flex-none place-items-center rounded-full text-forest hover:bg-forest/10">
+            <button type="button" onClick={onClose} aria-label="Close search" className="grid h-11 w-11 flex-none place-items-center rounded-btn text-forest hover:bg-forest/10">
               <Icon name="close" />
             </button>
           </form>
@@ -147,7 +147,7 @@ function MobileNav({ onClose, pathname }: { onClose: () => void; pathname: strin
       <div ref={ref} role="dialog" aria-modal="true" aria-label="Menu" className="on-dark toast absolute inset-y-0 right-0 flex w-full max-w-sm flex-col overflow-y-auto bg-forest text-cream">
         <div className="flex items-center justify-between px-5 py-4">
           <Logo compact />
-          <button type="button" onClick={onClose} aria-label="Close menu" className="grid h-11 w-11 place-items-center rounded-full hover:bg-cream/10">
+          <button type="button" onClick={onClose} aria-label="Close menu" className="grid h-11 w-11 place-items-center rounded-btn hover:bg-cream/10">
             <Icon name="close" />
           </button>
         </div>
@@ -168,7 +168,7 @@ function MobileNav({ onClose, pathname }: { onClose: () => void; pathname: strin
           <p className="eyebrow mt-6 text-gold">Shop by category</p>
           <div className="mt-3 flex flex-wrap gap-2">
             {CATEGORIES.map((c) => (
-              <Link key={c.id} href={`/shop?category=${c.id}`} onClick={onClose} className="rounded-full border border-cream/25 px-4 py-2.5 text-sm font-medium text-cream hover:border-gold hover:text-gold">
+              <Link key={c.id} href={`/shop?category=${c.id}`} onClick={onClose} className="rounded-btn border border-cream/25 px-4 py-2.5 text-sm font-medium text-cream hover:border-gold hover:text-gold">
                 {c.label}
               </Link>
             ))}
@@ -284,7 +284,7 @@ export function Header() {
             {NAV.map((item) => {
               const active = item.href === "/" ? pathname === "/" : pathname.startsWith(item.href);
               const linkClass = cx(
-                "relative flex h-11 items-center gap-1 rounded-full px-4 text-[0.82rem] font-semibold tracking-wide transition-colors hover:text-gold",
+                "relative flex h-11 items-center gap-1 rounded-btn px-4 text-[0.82rem] font-semibold tracking-wide transition-colors hover:text-gold",
                 active ? "text-gold" : "text-cream/90",
                 "after:absolute after:inset-x-4 after:bottom-1.5 after:h-px after:origin-left after:bg-gold after:transition-transform after:duration-500 after:ease-[var(--ease-expo)]",
                 active ? "after:scale-x-100" : "after:scale-x-0 hover:after:scale-x-100",
@@ -310,7 +310,7 @@ export function Header() {
                       aria-controls="shop-menu"
                       aria-label="Shop categories"
                       onClick={() => setShopOpen((o) => !o)}
-                      className="grid h-8 w-7 place-items-center rounded-full text-cream/80 hover:text-gold"
+                      className="grid h-8 w-7 place-items-center rounded-md text-cream/80 hover:text-gold"
                     >
                       <Icon name="chevron-down" className={cx("h-3.5 w-3.5 transition-transform duration-300", shopOpen && "rotate-180")} />
                     </button>
@@ -358,10 +358,10 @@ export function Header() {
         </nav>
 
         <div className="flex flex-none items-center gap-0.5">
-          <button type="button" onClick={() => setSearchOpen(true)} aria-label="Search" className="grid h-11 w-11 place-items-center rounded-full text-cream transition-colors hover:bg-cream/10 hover:text-gold">
+          <button type="button" onClick={() => setSearchOpen(true)} aria-label="Search" className="grid h-11 w-11 place-items-center rounded-btn text-cream transition-colors hover:bg-cream/10 hover:text-gold">
             <Icon name="search" />
           </button>
-          <Link href={user ? "/account" : "/login"} aria-label={user ? "My account" : "Sign in"} className="relative hidden h-11 w-11 sm:grid place-items-center rounded-full text-cream transition-colors hover:bg-cream/10 hover:text-gold">
+          <Link href={user ? "/account" : "/login"} aria-label={user ? "My account" : "Sign in"} className="relative hidden h-11 w-11 sm:grid place-items-center rounded-btn text-cream transition-colors hover:bg-cream/10 hover:text-gold">
             <Icon name="user" />
             {user && <span className="absolute right-2.5 top-2.5 h-2 w-2 rounded-full bg-gold ring-2 ring-forest" aria-hidden="true" />}
           </Link>
@@ -369,7 +369,7 @@ export function Header() {
             type="button"
             onClick={() => setDrawerOpen(true)}
             aria-label={`Basket, ${hydrated ? count : 0} item${count === 1 ? "" : "s"}`}
-            className="relative grid h-11 w-11 place-items-center rounded-full text-cream transition-colors hover:bg-cream/10 hover:text-gold"
+            className="relative grid h-11 w-11 place-items-center rounded-btn text-cream transition-colors hover:bg-cream/10 hover:text-gold"
           >
             <Icon name="bag" />
             {hydrated && count > 0 && (
@@ -378,7 +378,7 @@ export function Header() {
               </span>
             )}
           </button>
-          <button type="button" onClick={() => setMenuOpen(true)} aria-label="Open menu" aria-expanded={menuOpen} className="grid h-11 w-11 place-items-center rounded-full text-cream hover:bg-cream/10 lg:hidden">
+          <button type="button" onClick={() => setMenuOpen(true)} aria-label="Open menu" aria-expanded={menuOpen} className="grid h-11 w-11 place-items-center rounded-btn text-cream hover:bg-cream/10 lg:hidden">
             <Icon name="menu" />
           </button>
         </div>
